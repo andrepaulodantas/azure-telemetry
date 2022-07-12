@@ -1,0 +1,26 @@
+{
+  "name": "logs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Andre Araujo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "exec": "^0.2.1",
+    "express": "^4.18.1",
+    "http": "^0.0.1-security",
+    "js-file-download": "^0.4.12",
+    "nodemon": "^2.0.19",
+    "promisify": "^0.0.3",
+    "request": "^2.88.2",
+    "request-progress": "^3.0.0",
+    "winston": "^3.8.1"
+  }
+}

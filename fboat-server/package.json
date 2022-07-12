@@ -1,0 +1,102 @@
+{
+  "name": "Rpanion-server",
+  "version": "0.8.0",
+  "private": true,
+  "secure": false,
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "bootstrap": "^5.1.3",
+    "detect-rpi": "^1.4.0",
+    "express-rate-limit": "^6.4.0",
+    "express-validator": "^6.14.2",
+    "install": "^0.13.0",
+    "jspack": "file:local_modules/jspack",
+    "long": "file:local_modules/long",
+    "microtime": "^3.1.0",
+    "moment": "^2.29.1",
+    "npm": "^8.13.1",
+    "ntrip-client": "^1.0.3",
+    "nyc": "^15.1.0",
+    "prop-types": "^15.7.2",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.4.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "react-select": "^5.3.2",
+    "request": "^2.88.2",
+    "rsync": "^0.6.1",
+    "serialport": "^10.4.0",
+    "settings-store": "^1.4.1",
+    "shx": "^0.3.4",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1",
+    "startbootstrap-simple-sidebar": "^6.0.5",
+    "systeminformation": "^5.11.22",
+    "underscore": "^1.13.4",
+    "winston": "^3.8.0"
+  },
+  "bin": {
+    "coveralls": "./bin/coveralls.js"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "testfront": "DISABLE_ESLINT_PLUGIN=true react-scripts test",
+    "testback": " mocha ./server/*.test.js ./mavlink/*.test.js",
+    "mocha": "_mocha ./server/*.test.js ./mavlink/*.test.js",
+    "test-cov": "nyc npm run mocha",
+    "test-coveralls": "nyc npm run mocha && shx cat ./coverage/lcov.info | node ./bin/coveralls.js --verbose",
+    "lint": "eslint .",
+    "eject": "react-scripts eject",
+    "server": "node-env-run server --exec nodemon | pino-colada",
+    "service": "node-env-run server",
+    "dev": "run-p server start",
+    "version": "auto-changelog -p --commit-limit false && git add CHANGELOG.md"
+  },
+  "proxy": "http://localhost:3001",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "auto-changelog": "^2.4.0",
+    "body-parser": "^1.20.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.18.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.1",
+    "express": "^4.18.1",
+    "express-pino-logger": "^7.0.0",
+    "mocha": "^10.0.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "node-env-run": "^4.0.2",
+    "nodemon": "^2.0.18",
+    "npm-run-all": "^4.1.5",
+    "pino-colada": "^2.2.2",
+    "should": "^13.2.3"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "server/**/*.js",
+      "mavlink/mavManager.js"
+    ],
+    "exclude": [
+      "server/**/*.test.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
+  },
+  "overrides": {
+    "autoprefixer": "10.4.5"
+  }
+}
